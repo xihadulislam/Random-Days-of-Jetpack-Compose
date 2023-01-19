@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.xihadulislam.randomjetpackcompose.ui.theme.RandomjetpackcomposeTheme
+import com.xihadulislam.randomjetpackcompose.ui.views.ImageCard
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,63 +61,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
-
-@Composable
-fun ImageCard(
-    painter: Painter,
-    contentDescription: String,
-    title: String,
-    modifier: Modifier = Modifier
-
-) {
-
-    Card(
-        modifier = modifier
-            .height(250.dp)
-            .fillMaxWidth(0.5f),
-        shape = RoundedCornerShape(15.dp),
-        elevation = 5.dp
-
-    ) {
-
-        Box(
-        ) {
-            Image(
-                painter = painter,
-                contentDescription = contentDescription,
-                contentScale = ContentScale.Crop
-            )
-        }
-
-        Box(
-            modifier = modifier
-                .fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            Color.Black
-                        ),
-                        startY = 100f
-                    )
-                )
-        )
-
-        Box(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            contentAlignment = Alignment.BottomStart
-        ) {
-            Text(text = title, style = TextStyle(color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold))
-
-        }
-
-
-    }
-
-
 }
 
 
