@@ -5,19 +5,20 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -25,6 +26,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,7 +44,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    UserList()
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .padding(12.dp)
+                    ) {
+                        ImageCard(
+                            painter = painterResource(id = R.drawable.image),
+                            contentDescription = "",
+                            title = "Bangladesh, to the east of India on the Bay of Bengal"
+                        )
+                    }
+
                 }
             }
         }
@@ -50,19 +63,61 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun  ImageCard(
+fun ImageCard(
     painter: Painter,
-    contentDescription:String,
+    contentDescription: String,
     title: String,
     modifier: Modifier = Modifier
 
-){
+) {
+
+    Card(
+        modifier = modifier
+            .height(250.dp)
+            .fillMaxWidth(0.5f),
+        shape = RoundedCornerShape(15.dp),
+        elevation = 5.dp
+
+    ) {
+
+        Box(
+        ) {
+            Image(
+                painter = painter,
+                contentDescription = contentDescription,
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Transparent,
+                            Color.Black
+                        ),
+                        startY = 100f
+                    )
+                )
+        )
+
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            contentAlignment = Alignment.BottomStart
+        ) {
+            Text(text = title, style = TextStyle(color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold))
+
+        }
 
 
+    }
 
 
 }
-
 
 
 @Composable
