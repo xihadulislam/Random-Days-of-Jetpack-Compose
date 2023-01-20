@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.xihadulislam.randomjetpackcompose.ui.theme.RandomjetpackcomposeTheme
 import com.xihadulislam.randomjetpackcompose.ui.views.ImageCard
+import com.xihadulislam.randomjetpackcompose.ui.views.ShowFunnyText
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,8 +58,26 @@ class MainActivity : ComponentActivity() {
                             title = "Bangladesh, to the east of India on the Bay of Bengal"
                         )
                     }
-
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun UserCardList() {
+    LazyRow {
+        items((1..10).toList()) { user ->
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.5f)
+                    .padding(12.dp)
+            ) {
+                ImageCard(
+                    painter = painterResource(id = R.drawable.image),
+                    contentDescription = "",
+                    title = "Bangladesh, to the east of India on the Bay of Bengal"
+                )
             }
         }
     }
@@ -139,6 +159,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     Surface(Modifier.fillMaxSize()) {
-        UserList()
+        ShowFunnyText()
     }
 }
