@@ -42,7 +42,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     RandomDaysofJetpackComposeTheme {
-        Greeting("Android")
 
 
     }
