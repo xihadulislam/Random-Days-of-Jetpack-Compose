@@ -16,6 +16,7 @@ import com.ziad.random_days_of_jetpack_compose.ui.theme.Green200
 import com.ziad.random_days_of_jetpack_compose.ui.theme.Green500
 import com.ziad.random_days_of_jetpack_compose.ui.theme.GreenGradient
 import com.ziad.random_days_of_jetpack_compose.ui.theme.LightColor
+import com.ziad.random_days_of_jetpack_compose.ui.theme.Pink40
 import kotlin.math.floor
 
 @Composable
@@ -39,20 +40,20 @@ fun DrawScope.drawArcs(progress: Float, maxValue: Float) {
     fun drawBlur() {
         for (i in 0..20) {
             drawArc(
-                color = Green200.copy(alpha = i / 900f),
+                color = Pink40.copy(alpha = i / 1000f),
                 startAngle = startAngle,
                 sweepAngle = sweepAngle,
                 useCenter = false,
                 topLeft = topLeft,
                 size = size,
-                style = Stroke(width = 80f + (20 - i) * 20, cap = StrokeCap.Round)
+                style = Stroke(width = 60f + (20 - i) * 10, cap = StrokeCap.Round)
             )
         }
     }
 
     fun drawStroke() {
         drawArc(
-            color = Green500,
+            color = Pink40,
             startAngle = startAngle,
             sweepAngle = sweepAngle,
             useCenter = false,
